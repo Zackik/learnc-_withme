@@ -174,13 +174,148 @@ int Delete(struct Array *arr, int index){
                              └──────────┘
 */
 
+void swap(int *x, int *y){
+    int temp;
+    temp = *x;
+    *x = *y;
+    *y = temp;
+}
+/*
+flowchart TD
+    A([Start]) --> B[Declare int temp]
+    B --> C[temp = *x]
+    C --> D[*x = *y]
+    D --> E[*y = temp]
+    E --> F([End])
+*/
+int LinearSearch(struct Array *arr, int key){
+    int i;
+    for(i =0; i < arr->length; i++){
+        if(key == arr->A[i]){
+            swap(&arr->A[i], &arr->A[0]);
+            //swap(&arr->A[i], &arr->A[i-1]);
+            return i;
+        }
+    }
+    return -1;
+}
+/*
+              ┌─────────┐
+              │  Start  │
+              └────┬────┘
+                   ↓
+               i = 0
+                   ↓
+          ┌─────────────────┐
+          │ i < arr->length?│
+          └───────┬─────────┘
+             No   │   Yes
+             ↓    │    ↓
+        return -1 │  key == A[i]?
+             ↓    │    │
+            End   │    ├── No → i++ ──┐
+                  │    │              │
+                  │    └── Yes        │
+                  │         ↓         │
+                  │      swap()       │
+                  │         ↓         │
+                  │      return i     │
+                  │         ↓         │
+                  └──────── End ←─────┘
+*/
 
+int BinarySearch(struct Array arr, int key){
+    int l,mid,h;
+    l=0;
+    h=arr.length - 1;
+    
+    while(l <= h){
+        mid = (l + h)/2;
+        if(key == arr.A[mid]){
+            return mid;
+        }
+        else if(key < arr.A[mid]){
+            h = mid - 1;
+        }
+        else{
+            l = mid + 1;
+        }
+    }
+    return -1;
+}
+// l =0 , h = arr.length-1=> 15(0,1,2,3,4,5,6,7,8,9,10,11,12,13,14)
+//mid = (l + h)/ 2 => mid == key return mid 
+// key < mid => h = mid - 1 (key =15(arr.A[4]), mid = 18(arr.A[5])) h = mid - 1= 5 -1 = 4(arr.A[4])
+// key > mid => l = mid + 1 ( key = 16 mid 13) l = mid + 1 
+/*              Start
+                ↓
+             l = 0
+                ↓
+        h = length - 1
+                ↓
+            l <= h ?
+           /       \
+         No         Yes
+         ↓           ↓
+      return -1   mid=(l+h)/2
+         ↓           ↓
+        End       key == A[mid]?
+                  /          \
+                Yes           No
+                 ↓             ↓
+             return mid    key < A[mid]?
+                 ↓          /        \
+                End       Yes         No
+                           ↓           ↓
+                       h=mid-1      l=mid+1
+                           \           /
+                            ↖─────────↙
+*/
 
+int RBinSearch(int a[], int l, int h, int key){
+    int mid;
+    if(l <= h){
+        mid = (l + h)/2;
+        if(key == a[mid]){
+            return mid;
+        }
+        else if(key < a[mid]){
+            return RBinSearch(a, l, mid -1, key);
+        }
+        else{
+            return RBinSearch(a, mid + 1, h, key);
+        }
+    }
+    return -1;
+
+}
+/*
+flowchart TD
+    A([Start]) --> B{l <= h?}
+
+    B -- No --> C[return -1]
+    C --> Z([End])
+
+    B -- Yes --> D[mid = (l + h) / 2]
+    D --> E{key == a[mid]?}
+
+    E -- Yes --> F[return mid]
+    F --> Z
+
+    E -- No --> G{key < a[mid]?}
+
+    G -- Yes --> H[Recursive Call: RBinSearch a, l, mid-1, key]
+    H --> Z
+
+    G -- No --> I[Recursive Call: RBinSearch a, mid+1, h, key]
+    I --> Z
+*/
 int main()
 {
     struct Array arr = {{2,4,6,8,10}, 10, 5};
+    printf("%d\n", RBinSearch(arr.A, 0, arr.length, 8));
 
-    printf("%d\n", Delete(&arr, 2));
+    
     Display(arr);
 
 
