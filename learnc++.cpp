@@ -310,10 +310,56 @@ flowchart TD
     G -- No --> I[Recursive Call: RBinSearch a, mid+1, h, key]
     I --> Z
 */
+
+int get(struct Array arr, int index){
+        if(index >= 0 && index < arr.length){
+            return arr.A[index];
+        }
+    return -1;
+}
+
+int set(struct Array *arr,int index ,int x){
+    if(index >= 0 && index < arr->length){
+        arr->A[index] = x;
+    }
+    return -1;
+}
+
+int max(struct Array arr){
+    int max = arr.A[0];
+    for(int i =0; i < arr.length; i++){
+        if(arr.A[i] > max){
+            max = arr.A[i];
+        }
+    }
+    return max;
+}
+
+int min(struct Array arr){
+    int min = arr.A[0];
+    for(int i =0; i < arr.length; i++){
+        if(arr.A[i] < min){
+            min = arr.A[i];
+        }
+    }
+    return min;
+}
+
+int sum(struct Array arr){
+    int s =0;
+    for(int i =0; i< arr.length; i++){
+        s += arr.A[i];
+    }
+    return s;
+}
+
+float avg(struct Array arr){
+    return (float)sum(arr)/ arr.length;
+}
 int main()
 {
     struct Array arr = {{2,4,6,8,10}, 10, 5};
-    printf("%d\n", RBinSearch(arr.A, 0, arr.length, 8));
+    printf("%f\n", avg(arr));
 
     
     Display(arr);
