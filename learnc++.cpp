@@ -526,18 +526,111 @@ int k1;
     }
 }
     return arr2;
-
 }
+
+
+struct Array* Union(struct Array *arr, struct Array *arr1)
+{
+    int i, j, k;
+    i = j = k = 0;
+
+    struct Array *arr2 =
+        (struct Array *)malloc(sizeof(struct Array));
+
+    while (i < arr->length && j < arr1->length)
+    {
+        if (arr->A[i] < arr1->A[j])
+        {
+            arr2->A[k++] = arr->A[i++];
+        }
+        else if (arr->A[i] > arr1->A[j])
+        {
+            arr2->A[k++] = arr1->A[j++];
+        }
+        else
+        {
+            arr2->A[k++] = arr->A[i++];
+            j++;
+        }
+    }
+
+    while (i < arr->length)
+    {
+        arr2->A[k++] = arr->A[i++];
+    }
+
+    while (j < arr1->length)
+    {
+        arr2->A[k++] = arr1->A[j++];
+    }
+
+    arr2->length = k;
+    arr2->size = arr->size + arr1->size;
+
+    return arr2;
+}
+/*
+              ┌───────────────┐
+              │    START      │
+              └───────┬───────┘
+                      │
+                      ▼
+            ┌───────────────────┐
+            │ i = j = k = 0     │
+            └─────────┬─────────┘
+                      │
+                      ▼
+        ┌────────────────────────────┐
+        │ i < arr.length AND         │
+        │ j < arr1.length ?          │
+        └────────────┬───────────────┘
+                     │
+              ┌──────┴──────┐
+             YES            NO
+              │              │
+              ▼              ▼
+    ┌─────────────────┐   ┌────────────────────┐
+    │ arr[i] < arr1[j]│   │ Copy remaining     │
+    │      ?          │   │ elements of arr    │
+    └───────┬─────────┘   └─────────┬──────────┘
+            │                       │
+        ┌───┴───┐                   ▼
+       YES      NO                  ┌────────────────────┐
+        │        │                  │ Copy remaining     │
+        ▼        ▼                  │  elements of arr1  │
+ ┌────────────┐ ┌─────────────────┐ └─────────┬──────────┘
+ │arr2[k]=    │ │ arr[i] >        │           │
+ │arr[i]      │ │ arr1[j] ?       │           ▼
+ │i++, k++    │ └───────┬─────────┘      ┌───────────┐
+ └─────┬──────┘         │                │ length=k  │
+       │            ┌────┴────┐           └─────┬─────┘
+       │           YES       NO                 │
+       │            │          │                 ▼
+       │            ▼          ▼            ┌───────────┐
+       │     ┌────────────┐ ┌────────────┐  │   RETURN  │
+       │     │arr2[k]=    │ │arr2[k]=    │  │   arr2    │
+       │     │arr1[j]     │ │arr[i]      │  └─────┬─────┘
+       │     │j++, k++    │ │i++, j++, k++│       │
+       │     └─────┬──────┘ └──────┬─────┘        ▼
+       │           │               │          ┌────────┐
+       └───────────┴───────────────┴─────────►│  END   │
+                                              └────────┘
+*/
+
+
 int main()
 {
-    struct Array arr = {{-2,-4,6,8,10}, 10, 5};
-    struct Array arr1 = {{1,3,5,7,-16}, 10, 5};
+    struct Array arr = {{-4, -2, 6, 8, 10}, 10, 5};
+
+    struct Array arr1 = {{-16, 1, 3, 5, 7}, 10, 5};
+
     struct Array *arr2;
-    
-    arr2= Merge(&arr, &arr1);
+
+    arr2 = Union(&arr, &arr1);
 
     Display(*arr2);
 
+    free(arr2);
 
     return 0;
 }
