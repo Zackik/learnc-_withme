@@ -2,43 +2,82 @@
 #include <stdlib.h>
 // Day 1: Array Implementation
 //Day 2: Insertion in Array
-struct Array {
-    int A[10];
+class Array {
+private:
+    int *A;
     int size;
     int length;
+    void swap(int *x, int *y);
+public:
+    Array(){
+        size = 10;
+        length =0;
+        A = new int[size];
+    }
+    Array(int sz){
+        size = sz;
+        length =0;
+        A = new int[size];
+    }
+    ~Array(){
+        delete []A;    
+    }
+    void Display();
+    void Append(int x);
+    void Insert(int index, int x);
+
+    
+    int LinearSearch(int key);
+    int BinarySearch(int key);
+    //int RBinarySearch(int a[], int l, int h, int key);
+    int get(int index);
+    int set(int index, int x);
+    int max();
+    int min();
+    int sum();
+    float avg();
+    void reverse();
+    void reverse2();
+    void InsertSoft(int x);
+    int isSoft();
+    void Rearrange();
+    Array* Merge(Array *arr2);
+    Array* Union(Array *arr2);
+    Array* Intersection(Array *arr2);
+    Array* Difference(Array *arr2);
 };
 
-void Display(struct Array arr){
+void Array::Display(){
     int i;
     printf("Elements are: ");
-    for(i =0; i< arr.length; i++){
-        printf("%d ", arr.A[i]);
+    for(i =0; i< length; i++){
+        printf("%d ", A[i]);
     }
     printf("\n");
 }
 
-void Append(struct Array *arr, int x){
-    if(arr->length < arr->size){
-        arr->A[arr->length++] = x;
+void Array::Append(int x){
+    if(length < size){
+        A[length++] = x;
     }
 }
-void Insert(struct Array *arr, int index, int x){
-    if(index >= 0 && index <= arr->length){
+void Array::Insert(int index, int x){
+    if(index >= 0 && index <= length){
         // A[10] = 10, A[9] = 9, A[8] = 8, A[7] = 7, A[6] = 6, A[5] = 5, A[4] = 4, A[3] = 3, A[2] = 2, A[1] = 1, A[0] = 0
         // i = 10; i > 5; i-- A[10] = A[9]; A[9] = A[8]; A[8] = A[7]; A[7] = A[6]; A[6] = A[5];
 
-        for(int i = arr->length ; i > index; i--){
+        for(int i = length ; i > index; i--){
             // A[6] = A[5]; A[6] = 5; A[5] = 4; A[4] = 3; A[3] = 2; A[2] = 1; A[1] = 0; 
             // A[5] = A[4]; A[4] = A[3]; A[3] = A[2]; A[2] = A[1]; A[1] = A[0];
             // A[4] = A[3]; A[3] = A[2]; A[2] = A[1]; A[1] = A[0];
-            arr->A[i] = arr->A[i-1];
+            A[i] = A[i-1];
         }
         //A[5] = 5; 
-        arr->A[index] = x;
+        A[index] = x;
         // A[5] = 5; A[4] = 4; A[3] = 3; A[2] = 2; A[1] = 1; A[0] = 0;
         //index = 12, A[5] = 12; A[4] = 4; A[3] = 3; A[2] = 2; A[1] = 1; A[0] = 0;
         // A[6] = 5; A[5] = 12; A[4] = 4; A[3] = 3; A[2] = 2; A[1] = 1; A[0] = 0;
-        arr->length++;
+        length++;
     }
 }
 //Mở sẻ ra là size 4 , length 3 
@@ -81,16 +120,16 @@ arr->length++;
 
 */
 
-int Delete(struct Array *arr, int index){
+int Array::Delete(int index){
     int x =0;
     int i;
     
-    if(index >= 0 && index < arr->length){
-        x = arr->A[index];
-        for(i = index; i < arr->length -1; i++){
-            arr->A[i] = arr->A[i+1];
+    if(index >= 0 && index < length){
+        x = A[index];
+        for(i = index; i < length -1; i++){
+            A[i] = A[i+1];
         }
-        arr->length--;
+        length--;
         printf("Deleted element is: %d\n", x);
         return x;
     }
@@ -188,11 +227,11 @@ flowchart TD
     D --> E[*y = temp]
     E --> F([End])
 */
-int LinearSearch(struct Array *arr, int key){
+int Array::LinearSearch(int key){
     int i;
-    for(i =0; i < arr->length; i++){
-        if(key == arr->A[i]){
-            swap(&arr->A[i], &arr->A[0]);
+    for(i =0; i < length; i++){
+        if(key == A[i]){
+            swap(& A[i],& A[0]);
             //swap(&arr->A[i], &arr->A[i-1]);
             return i;
         }
@@ -224,17 +263,17 @@ int LinearSearch(struct Array *arr, int key){
                   └──────── End ←─────┘
 */
 
-int BinarySearch(struct Array arr, int key){
+int Array::BinarySearch(int key){
     int l,mid,h;
     l=0;
-    h=arr.length - 1;
+    h=length - 1;
     
     while(l <= h){
         mid = (l + h)/2;
-        if(key == arr.A[mid]){
+        if(key == A[mid]){
             return mid;
         }
-        else if(key < arr.A[mid]){
+        else if(key < A[mid]){
             h = mid - 1;
         }
         else{
@@ -272,7 +311,7 @@ int BinarySearch(struct Array arr, int key){
                             ↖─────────↙
 */
 
-int RBinSearch(int a[], int l, int h, int key){
+int Array::RBinSearch(int a[], int l, int h, int key){
     int mid;
     if(l <= h){
         mid = (l + h)/2;
@@ -311,50 +350,50 @@ flowchart TD
     I --> Z
 */
 
-int get(struct Array arr, int index){
-        if(index >= 0 && index < arr.length){
-            return arr.A[index];
+int Array::get(int index){
+        if(index >= 0 && index < length){
+            return A[index];
         }
     return -1;
 }
 
-int set(struct Array *arr,int index ,int x){
-    if(index >= 0 && index < arr->length){
-        arr->A[index] = x;
+int Array::set(int index ,int x){
+    if(index >= 0 && index < length){
+        A[index] = x;
     }
     return -1;
 }
 
-int max(struct Array arr){
-    int max = arr.A[0];
-    for(int i =0; i < arr.length; i++){
-        if(arr.A[i] > max){
-            max = arr.A[i];
+int Array::max(){
+    int max = A[0];
+    for(int i =0; i < length; i++){
+        if(A[i] > max){
+            max = A[i];
         }
     }
     return max;
 }
 
-int min(struct Array arr){
-    int min = arr.A[0];
-    for(int i =0; i < arr.length; i++){
-        if(arr.A[i] < min){
-            min = arr.A[i];
+int Array::min(){
+    int min = A[0];
+    for(int i =0; i < length; i++){
+        if(A[i] < min){
+            min = A[i];
         }
     }
     return min;
 }
 
-int sum(struct Array arr){
+int Array::sum(){
     int s =0;
-    for(int i =0; i< arr.length; i++){
-        s += arr.A[i];
+    for(int i =0; i< length; i++){
+        s += A[i];
     }
     return s;
 }
 
-float avg(struct Array arr){
-    return (float)sum(arr)/ arr.length;
+float Array::avg(){
+    return (float)sum(arr)/ length;
 }
 
 // void reverse(struct Array *arr){
@@ -369,19 +408,19 @@ float avg(struct Array arr){
 //     }
 // }
 
-void reverse(struct Array *arr) {
+void Array::reverse() {
 
     int *B;
     int i, j;
 
-    B = (int *)malloc(arr->length * sizeof(int));
+    B = (int *)malloc(length * sizeof(int));
 
-    for (i = arr->length - 1, j = 0; i >= 0; i--, j++) {
-        B[j] = arr->A[i];
+    for (i = length - 1, j = 0; i >= 0; i--, j++) {
+        B[j] = A[i];
     }
 
-    for (i = 0; i < arr->length; i++) {
-        arr->A[i] = B[i];
+    for (i = 0; i < length; i++) {
+        A[i] = B[i];
     }
 
     free(B);
@@ -403,10 +442,10 @@ A:        2   4   6   8   10
 */
 
 
-void reverse2(struct Array *arr){
+void Array::reverse2(){
     int i,j;
-    for(i =0, j = arr->length -1; i<j; i++, j--){
-        swap(&arr->A[i], &arr->A[j]);
+    for(i =0, j = length -1; i<j; i++, j--){
+        swap(& A[i],& A[j]);
     }
 }
 /*
@@ -438,71 +477,71 @@ Big-O is O(n)
 
 // }
 
-void leftShift(struct Array *arr) {
-    int first = arr->A[0];
+// void leftShift(struct Array *arr) {
+//     int first = arr->A[0];
 
-    for(int i = 0; i < arr->length - 1; i++) {
-        arr->A[i] = arr->A[i + 1];
-    }
+//     for(int i = 0; i < arr->length - 1; i++) {
+//         arr->A[i] = arr->A[i + 1];
+//     }
 
-    arr->A[arr->length - 1] = first;
-}
+//     arr->A[arr->length - 1] = first;
+// }
 
-void InsertSoft(struct Array *arr, int x){
-    int i = arr->length -1;
-    if(i >= 0 && arr->length ==arr->size){
+void Array::InsertSoft(int x){
+    int i =length -1;
+    if(i >= 0 && length == size){
         return;
     }
-    while(arr->A[i] > x){
-        arr->A[i + 1] = arr->A[i];
+    while(A[i] > x){
+        A[i + 1] = A[i];
         i --;
     }
-    arr->A[i + 1] = x;
-    arr->length++;
+    A[i + 1] = x;
+    length++;
 }
 
-int isSoft(struct Array arr){
+int Array::isSoft(){
     int i;
-    for(i = 0;i < arr.length-1; i++){
-        if(arr.A[i] > arr.A[i + 1]){
+    for(i = 0;i < length-1; i++){
+        if(A[i] > A[i + 1]){
             return 0;
         }
     }
     return 1;
 }
 
-void Rearrange(struct Array *arr){
+void Array::Rearrange(){
     int i,j;
     i = 0;
-    j = arr->length-1;
+    j = length-1;
     while(i < j){
-        while(arr->A[i]< 0)i++;
-        while(arr->A[j] >=0)j--;
-        if(i < j) swap(&arr->A[i], &arr->A[j]);
+        while(A[i]< 0)i++;
+        while(A[j] >=0)j--;
+        if(i < j) swap(& A[i],& A[j]);
     }
 }
 
 
-struct Array* Merge(struct Array *arr, struct Array *arr1){
+Array* Merge(Array *arr1){
     int i,j,k;
     i=j=k=0;
-    struct Array *arr2 = (struct Array *)malloc(sizeof(struct Array));
-    while(i < arr->length &&  j < arr1->length){
-        if(arr->A[i] < arr1->A[j]){
-            arr2->A[k++] = arr->A[i++];
+    Array *arr2 = new Array(length + arr1.length);
+    while(i < length &&  j < arr1.length){
+        if(A[i] < arr1.A[j]){
+            arr2->A[k++] = A[i++];
         }
         else{
-            arr2->A[k++] = arr1->A[j++];
+            arr2->A[k++] = A[j++];
         }
     }
-    for(;i<arr->length;i++){
-        arr2->A[k++] = arr->A[i];
+    for(;i<length;i++){
+        arr2->A[k++] = A[i];
     }
-    for(;j<arr1->length;j++){
-        arr2->A[k++] = arr1->A[j];
+    for(;j<arr1.length;j++){
+        arr2->A[k++] = arr1.A[j];
     }
-    arr2->length = arr->length + arr1->length;
-    arr2->size = arr->length + arr1->length;
+    arr2->length = length + arr1.length;
+    arr2->size = length + arr1.length;
 
 //soft
 int k1;
@@ -529,43 +568,43 @@ int k1;
 }
 
 
-struct Array* Union(struct Array *arr, struct Array *arr1)
+Array* Union(Array *arr1)
 {
     int i, j, k;
     i = j = k = 0;
 
-    struct Array *arr2 =
-        (struct Array *)malloc(sizeof(struct Array));
+    Array *arr2 = new Array(length + arr1.length);
+        
 
-    while (i < arr->length && j < arr1->length)
+    while (i < length && j < arr1.length)
     {
-        if (arr->A[i] < arr1->A[j])
+        if (A[i] < arr1.A[j])
         {
-            arr2->A[k++] = arr->A[i++];
+            arr2->A[k++] = A[i++];
         }
-        else if (arr->A[i] > arr1->A[j])
+        else if (A[i] > arr1.A[j])
         {
-            arr2->A[k++] = arr1->A[j++];
+            arr2->A[k++] = arr1.A[j++];
         }
         else
         {
-            arr2->A[k++] = arr->A[i++];
+            arr2->A[k++] = A[i++];
             j++;
         }
     }
 
-    while (i < arr->length)
+    while (i < length)
     {
-        arr2->A[k++] = arr->A[i++];
+        arr2->A[k++] = A[i++];
     }
 
-    while (j < arr1->length)
+    while (j < arr1.length)
     {
-        arr2->A[k++] = arr1->A[j++];
+        arr2->A[k++] = arr1.A[j++];
     }
 
     arr2->length = k;
-    arr2->size = arr->size + arr1->size;
+    arr2->size = size + arr1.size;
 
     return arr2;
 }
@@ -616,21 +655,199 @@ struct Array* Union(struct Array *arr, struct Array *arr1)
        └───────────┴───────────────┴─────────►│  END   │
                                               └────────┘
 */
+// struct Array *Intersection(struct Array *arr, struct Array *arr1){
+//     int i,j,k;
+//     i=j=k=0;
+//     struct Array *arr2 = (struct Array *)malloc(sizeof(struct Array));
+//     while(i< arr->length && j< arr1->length){
+//         if(arr->A[i] < arr1->A[j]){
+//             i++;
+//         }else if(arr->A[i] > arr1->A[j]){
+//             j++;
+//         }
+//         else if(arr->A[i] == arr1->A[j]){
+//             arr2->A[k++] = arr->A[i++];
+//             j++;
+//         }
+//     }
+//     arr2->length = k;
+//     arr2->size = arr->length < arr1->length ? arr->length : arr1->length;
+//     return arr2;
+// }
 
+Array *Intersection(Array *arr1)
+{
+    int i, j, k;
 
+    i = j = k = 0;
+
+    Array *arr2 = new Array(length + arr1.length);
+
+    arr2->size = length < arr1.length
+               ? length
+               : arr1.length;
+
+    
+
+    while (i < length && j < arr1.length)
+    {
+        if (A[i] < arr1.A[j])
+        {
+            i++;
+        }
+        else if (A[i] > arr1.A[j])
+        {
+            j++;
+        }
+        else
+        {
+            arr2->A[k++] = A[i];
+
+            i++;
+            j++;
+        }
+    }
+
+    arr2->length = k;
+
+    return arr2;
+}
+Array *Difference(Array *arr1){
+    int i, j, k;
+    i = 0; j =0; k =0;
+    Array *arr2 = new Array(length + arr1.length);
+    while(i< length && j < arr1.length){
+        if(A[i] < arr1.A[j]){
+            arr2->A[k++] = A[i++];
+        }
+        else if(A[i]> arr1.A[j]){
+            j++;
+        }
+        else{
+            i++;
+            j++;
+        }
+    }
+    for(;i<length;i++){
+        arr2->A[k++] = A[i];
+    }
+
+    arr2->length =k;
+    return arr2;
+}
+/*
+              ┌──────────────┐
+              │    START     │
+              └──────┬───────┘
+                     │
+                     ▼
+            ┌─────────────────┐
+            │ i = 0, j = 0    │
+            │ k = 0           │
+            └────────┬────────┘
+                     │
+                     ▼
+        ┌───────────────────────────┐
+        │ i < A.length &&           │
+        │ j < B.length ?            │
+        └────────────┬──────────────┘
+                  YES│
+                     ▼
+             ┌────────────────┐
+             │   A[i] < B[j]  │
+             └───────┬────────┘
+                  YES│       │NO
+                     │       ▼
+                     │  ┌────────────────┐
+                     │  │   A[i] > B[j]  │
+                     │  └───────┬────────┘
+                     │       YES│      │NO
+                     │          │      │
+                     ▼          ▼      ▼
+          ┌──────────────┐ ┌────────┐ ┌─────────────┐
+          │ result[k] =  │ │ j = j+1│ │ i = i+1     │
+          │ A[i]         │ └───┬────┘ │ j = j+1     │
+          │ k = k+1      │     │      └──────┬──────┘
+          │ i = i+1      │     │             │
+          └──────┬───────┘     │             │
+                 │             │             │
+                 └─────────────┴─────────────┘
+                               │
+                               ▼
+                     quay lại kiểm tra
+                     i < A.length &&
+                     j < B.length
+                               │
+                              NO
+                               ▼
+                    ┌──────────────────┐
+                    │ i < A.length ?   │
+                    └────────┬─────────┘
+                          YES│
+                             ▼
+                  ┌────────────────────┐
+                  │ result[k] = A[i]   │
+                  │ k = k + 1          │
+                  │ i = i + 1          │
+                  └─────────┬──────────┘
+                            │
+                            │ quay lại
+                            ▼
+                    ┌──────────────────┐
+                    │ length = k       │
+                    └────────┬─────────┘
+                             │
+                             ▼
+                       ┌───────────┐
+                       │   RETURN  │
+                       │  result   │
+                       └───────────┘
+*/
 int main()
 {
-    struct Array arr = {{-4, -2, 6, 8, 10}, 10, 5};
+    Array *arr;
+    int ch;
+    int x, index;
+    
+    printf("Enter size of Array ");
+    scanf("%d", &sz);
+    arr = new Array(sz);
+    
+    do{
 
-    struct Array arr1 = {{-16, 1, 3, 5, 7}, 10, 5};
+    printf("Menu\n");
+    printf("1. Insert\n");
+    printf("2. Delete\n");
+    printf("3. Search\n");
+    printf("4. Sum\n");
+    printf("5. Display\n");
+    printf("6. Exit\n");
 
-    struct Array *arr2;
+    printf("Enter you choice ");
+    scanf("%d", &ch);
+    switch(ch){
+        case 1: printf("Enter an element and index");
+            scanf("%d%d", &x, &index);
+            arr.Insert(index, x);
+            break;
+        case 2: printf("Enter index ");
+            scanf("%d", &index);
+            x = arr.Delete(index);
+            printf("Deleted element is %d\n",x);
+            break;
+        case 3: printf("Enter element to search ");
+            scanf("%d", &index);
+            index = arr.LinearSearch(x);
+            printf("Element index %d", index);
+            break;
+        case 4: printf("Sum is %d\n", arr.sum());
+            break;
+        case 5: arr.Display();
+    }
 
-    arr2 = Union(&arr, &arr1);
+    }
+    while(ch<6);
 
-    Display(*arr2);
-
-    free(arr2);
 
     return 0;
 }
