@@ -356,13 +356,187 @@ int sum(struct Array arr){
 float avg(struct Array arr){
     return (float)sum(arr)/ arr.length;
 }
+
+// void reverse(struct Array *arr){
+//     int *B;
+//     int i,j;
+//     B = (int *)malloc(arr->length * sizeof(int));
+//     for(i = arr->length-1, j =0; i >=0; i--, j++){
+//         B[i] = arr->A[i];
+//     }
+//     for(i =0; i< arr->length; i++){
+//         arr->A[i] = B[i];
+//     }
+// }
+
+void reverse(struct Array *arr) {
+
+    int *B;
+    int i, j;
+
+    B = (int *)malloc(arr->length * sizeof(int));
+
+    for (i = arr->length - 1, j = 0; i >= 0; i--, j++) {
+        B[j] = arr->A[i];
+    }
+
+    for (i = 0; i < arr->length; i++) {
+        arr->A[i] = B[i];
+    }
+
+    free(B);
+}
+/*
+Index:    0   1   2   3    4
+          ↓   ↓   ↓   ↓    ↓
+A:        2   4   6   8   10
+
+
+| Lần | `i` | `j` |      `B[j] = A[i]` |
+| --: | --: | --: | -----------------: |
+|   1 |   4 |   0 | `B[0] = A[4] = 10` |
+|   2 |   3 |   1 |  `B[1] = A[3] = 8` |
+|   3 |   2 |   2 |  `B[2] = A[2] = 6` |
+|   4 |   1 |   3 |  `B[3] = A[1] = 4` |
+|   5 |   0 |   4 |  `B[4] = A[0] = 2` |
+
+*/
+
+
+void reverse2(struct Array *arr){
+    int i,j;
+    for(i =0, j = arr->length -1; i<j; i++, j--){
+        swap(&arr->A[i], &arr->A[j]);
+    }
+}
+/*
+Index:  0   1   2   3   4
+A:      2   4   6   8  10
+        ↑           ↑
+        i           j
+
+i = 0
+j = 4
+
+swap(A[0], A[4])
+
+i < j
+2 < 2 → false
+
+reverse2()
+Time  = O(n)
+Space = O(1)
+Big-O is O(n)
+*/
+
+// void leftShift(struct Array *arr){
+//     int first = arr->A[0];
+//     for(int i =0; i < arr->length -1; i++){
+//         arr->A[i] = arr->A[i + 1];
+//     }
+//     arr->A[length -1] = first;
+
+// }
+
+void leftShift(struct Array *arr) {
+    int first = arr->A[0];
+
+    for(int i = 0; i < arr->length - 1; i++) {
+        arr->A[i] = arr->A[i + 1];
+    }
+
+    arr->A[arr->length - 1] = first;
+}
+
+void InsertSoft(struct Array *arr, int x){
+    int i = arr->length -1;
+    if(i >= 0 && arr->length ==arr->size){
+        return;
+    }
+    while(arr->A[i] > x){
+        arr->A[i + 1] = arr->A[i];
+        i --;
+    }
+    arr->A[i + 1] = x;
+    arr->length++;
+}
+
+int isSoft(struct Array arr){
+    int i;
+    for(i = 0;i < arr.length-1; i++){
+        if(arr.A[i] > arr.A[i + 1]){
+            return 0;
+        }
+    }
+    return 1;
+}
+
+void Rearrange(struct Array *arr){
+    int i,j;
+    i = 0;
+    j = arr->length-1;
+    while(i < j){
+        while(arr->A[i]< 0)i++;
+        while(arr->A[j] >=0)j--;
+        if(i < j) swap(&arr->A[i], &arr->A[j]);
+    }
+}
+
+
+struct Array* Merge(struct Array *arr, struct Array *arr1){
+    int i,j,k;
+    i=j=k=0;
+    struct Array *arr2 = (struct Array *)malloc(sizeof(struct Array));
+    while(i < arr->length &&  j < arr1->length){
+        if(arr->A[i] < arr1->A[j]){
+            arr2->A[k++] = arr->A[i++];
+        }
+        else{
+            arr2->A[k++] = arr1->A[j++];
+        }
+    }
+    for(;i<arr->length;i++){
+        arr2->A[k++] = arr->A[i];
+    }
+    for(;j<arr1->length;j++){
+        arr2->A[k++] = arr1->A[j];
+    }
+    arr2->length = arr->length + arr1->length;
+    arr2->size = arr->length + arr1->length;
+
+//soft
+int k1;
+    for(int h=0; h< arr2->length; h++){
+        int i1=0,j1=arr2->length-1;
+        while(i1<j1){
+            while(arr2->A[i1]<0)i1++;
+            while(arr2->A[j1]>0)j1--;
+            if(i1<j1)swap(&arr2->A[i1], &arr2->A[j1]);
+        }
+    }
+    //comparisons
+    for(int i = 0; i < arr2->length - 1; i++)
+{
+    for(int j = i + 1; j < arr2->length; j++)
+    {
+        if(arr2->A[i] > arr2->A[j])
+        {
+            swap(&arr2->A[i], &arr2->A[j]);
+        }
+    }
+}
+    return arr2;
+
+}
 int main()
 {
-    struct Array arr = {{2,4,6,8,10}, 10, 5};
-    printf("%f\n", avg(arr));
-
+    struct Array arr = {{-2,-4,6,8,10}, 10, 5};
+    struct Array arr1 = {{1,3,5,7,-16}, 10, 5};
+    struct Array *arr2;
     
-    Display(arr);
+    arr2= Merge(&arr, &arr1);
+
+    Display(*arr2);
 
 
     return 0;
