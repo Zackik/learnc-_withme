@@ -1,43 +1,77 @@
-# Learn C++ With Me 🚀
+# Learn C/C++ With Me 🚀
 
-Một repository dùng để **học C/C++ thông qua code, bài tập và tự phân tích thuật toán**.
+> A hands-on journey through **C/C++, Data Structures, Algorithms, problem solving, and Big-O analysis**.
 
-> Repository này tập trung vào việc học từ nền tảng, đặc biệt là **Array, Searching, Recursion, Big-O và các thao tác trên mảng trong C/C++**.
+urlRepository: Zackik/learnc-_withmehttps://github.com/Zackik/learnc-_withme
 
-## 📚 Nội dung hiện tại
+## 📌 About
 
-### 1. Array Implementation
+**Learn C/C++ With Me** is a personal learning repository built around one principle:
 
-Thực hành xây dựng cấu trúc mảng bằng `struct Array`:
+> **Don't just make the code work — understand how and why it works.**
 
-- `Display()` — hiển thị phần tử
-- `Append()` — thêm phần tử vào cuối
-- `Insert()` — chèn phần tử tại vị trí bất kỳ
-- `Delete()` — xóa phần tử
-- `Get()` / `Set()` — truy cập và cập nhật phần tử
-- `Max()` / `Min()` — tìm giá trị lớn nhất/nhỏ nhất
-- `Sum()` / `Avg()` — tính tổng và trung bình
+The repository contains implementations, exercises, algorithm analysis, traces, and experiments focused on building a strong foundation in programming and Data Structures & Algorithms.
 
-### 2. Searching
+The current material is centered on **Array ADT and array-based algorithms**, with the roadmap gradually expanding toward Linked Lists, Stacks, Queues, Trees, Hash Tables, Sorting, and Graphs.
+
+## 🎯 Learning Goals
+
+This repository aims to help build the ability to:
+
+- Write C/C++ from fundamentals instead of relying only on libraries.
+- Understand memory, arrays, indexes, pointers, and data representation.
+- Implement common data-structure operations from scratch.
+- Trace an algorithm step by step.
+- Analyze **time and space complexity**.
+- Compare different approaches to the same problem.
+- Recognize Best, Average, and Worst Cases.
+- Build a foundation for competitive programming, technical interviews, and systems programming.
+
+## 📚 Current Topics
+
+### 1. Array ADT
+
+The repository includes hands-on work with an Array ADT and operations such as:
+
+- Display elements
+- Append
+- Insert
+- Delete
+- Get / Set
+- Find Max / Min
+- Sum / Average
+- Search
+- Reverse
+- Shift / Circular Shift
+- Check whether an array is sorted
+- Insert into a sorted array
+- Merge sorted arrays
+- Rearrange negative and positive values
+
+### 2. Array Problems
+
+Current exercises include problems such as:
+
+- Finding missing elements
+- Finding duplicate elements
+- Finding maximum and minimum values
+- Pair Sum / Two Sum
+- Merging arrays
+- Array manipulation and transformation
+- Combining multiple array techniques into complete solutions
+
+### 3. Searching
 
 - Linear Search
 - Binary Search
 - Recursive Binary Search
-- Move-to-front trong Linear Search
+- Improved Linear Search techniques such as Move-to-Front
 
-### 3. Array Manipulation
+### 4. Algorithm Analysis
 
-- Reverse bằng mảng phụ
-- Reverse tại chỗ với `O(1)` extra space
-- Left circular shift
-- Insert vào mảng đã sắp xếp
-- Kiểm tra mảng đã sắp xếp
-- Rearrange phần tử âm/dương
-- Merge hai mảng đã sắp xếp
+A major focus of the repository is learning how to analyze algorithms rather than memorizing answers.
 
-### 4. Algorithm Complexity — Big-O
-
-Repository có các bài tập tự phân tích độ phức tạp từ cơ bản đến nâng cao:
+Topics include:
 
 - `O(1)` — Constant
 - `O(log n)` — Logarithmic
@@ -45,117 +79,234 @@ Repository có các bài tập tự phân tích độ phức tạp từ cơ bả
 - `O(n log n)` — Linearithmic
 - `O(n²)` — Quadratic
 - `O(n² log n)`
-- Recursion và recurrence cơ bản
-
-Các bài tập cũng phân tích:
-
+- Recursion
+- Basic recurrence analysis
+- Exact operation counting
 - Best Case
 - Average Case
 - Worst Case
-- Exact number of operations
-- Asymptotic complexity
+- Time Complexity
+- Space Complexity
 
-## 🗂️ Cấu trúc repository
+## 🧠 Learning Method
+
+Each topic follows a practical workflow:
+
+```text
+Understand the Concept
+        ↓
+Implement the Code
+        ↓
+Trace the Algorithm
+        ↓
+Test with Examples
+        ↓
+Analyze Time / Space Complexity
+        ↓
+Solve Variations
+        ↓
+Refactor and Improve
+```
+
+The goal is to develop **algorithmic thinking**, not simply collect code snippets.
+
+## 🗂️ Repository Structure
 
 ```text
 learnc-_withme/
+│
 ├── .vscode/
 │   ├── launch.json
 │   ├── settings.json
 │   └── tasks.json
-├── helloworld
-├── homework.cpp
-├── learnc++
-├── learnc++.cpp
+│
+├── ADT ARRAY/
+│   ├── Find_duplicates
+│   ├── Find_duplicates.cpp
+│   ├── find_missing_elements
+│   ├── find_missing_elements.cpp
+│   ├── finding_max_and_min
+│   ├── finding_max_and_min.cpp
+│   ├── homework.cpp
+│   ├── pair_sum_two_sum
+│   ├── pair_sum_two_sum.cpp
+│   ├── pull_all_together_in_c++
+│   └── ...
+│
 └── README.md
 ```
 
-## 🧠 Phương pháp học
+The `ADT ARRAY` directory contains the main collection of array implementations and exercises currently being studied. citeturn3file0
 
-Mục tiêu của repository không chỉ là viết code chạy được mà còn hiểu **tại sao code hoạt động**.
+## 🛠️ Technology Stack
 
-Mỗi chủ đề được học theo hướng:
-
-```text
-Concept
-   ↓
-Code
-   ↓
-Trace từng bước
-   ↓
-Phân tích thuật toán
-   ↓
-Big-O
-   ↓
-Tự làm bài tập
-   ↓
-Cải thiện implementation
-```
-
-Trong source code có các comment, ví dụ trace và flowchart để hỗ trợ việc tự học.
-
-## 🛠️ Công nghệ
-
-- C / C++
-- GCC / G++
-- VS Code
-- Git & GitHub
+- **C / C++**
+- **GCC / G++**
+- **Visual Studio Code**
+- **Git**
+- **GitHub**
 
 ## ▶️ Build & Run
 
-Ví dụ với `learnc++.cpp`:
+### Compile a C++ file
 
 ```bash
-g++ learnc++.cpp -o learnc++
-./learnc++
+g++ "ADT ARRAY/learnc++.cpp" -o learnc
 ```
 
-Với bài tập:
+### Run
+
+Linux / macOS:
 
 ```bash
-g++ homework.cpp -o homework
-./homework
+./learnc
 ```
+
+Windows:
+
+```powershell
+.\learnc.exe
+```
+
+For another exercise, replace the source file with the file you want to study:
+
+```bash
+g++ "ADT ARRAY/pair_sum_two_sum.cpp" -o pair_sum
+./pair_sum
+```
+
+## 🔬 Example: Complexity Thinking
+
+Instead of only asking:
+
+```text
+Does the program produce the correct answer?
+```
+
+this repository also asks:
+
+```text
+How many operations does it perform?
+How does the algorithm behave when n grows?
+What is the Best Case?
+What is the Worst Case?
+How much extra memory does it use?
+Can the solution be improved?
+```
+
+For example, a simple linear scan generally has:
+
+```text
+Best Case:   O(1)
+Worst Case:  O(n)
+Space:       O(1)
+```
+
+This style of analysis is applied throughout the exercises.
 
 ## 📈 Roadmap
 
-- [x] Array implementation
-- [x] Array insertion & deletion
+### Foundations
+
+- [x] C/C++ fundamentals
+- [x] Array basics
+- [x] Array ADT
+- [x] Array insertion / deletion
 - [x] Linear Search
 - [x] Binary Search
 - [x] Recursive Binary Search
 - [x] Reverse Array
-- [x] Circular Left Shift
+- [x] Circular Shift
 - [x] Sorted Array Operations
 - [x] Merge Arrays
+- [x] Missing Elements
+- [x] Duplicate Elements
+- [x] Pair Sum / Two Sum
 - [x] Big-O fundamentals
 - [x] Recursion complexity basics
+
+### Data Structures
+
 - [ ] Linked List
+- [ ] Doubly Linked List
+- [ ] Circular Linked List
 - [ ] Stack
 - [ ] Queue
-- [ ] Trees
+- [ ] Circular Queue
+- [ ] Deque
 - [ ] Hash Table
-- [ ] Sorting Algorithms
-- [ ] Graph Algorithms
-- [ ] Advanced Recursion
-- [ ] Data Structures & Algorithms projects
+- [ ] Trees
+- [ ] Binary Search Tree
+- [ ] Heap / Priority Queue
+- [ ] Graph
 
-## 🎯 Mục tiêu
+### Algorithms
 
-Xây dựng nền tảng C/C++ và Data Structures & Algorithms đủ chắc để có thể:
+- [ ] Bubble Sort
+- [ ] Selection Sort
+- [ ] Insertion Sort
+- [ ] Merge Sort
+- [ ] Quick Sort
+- [ ] Heap Sort
+- [ ] Counting Sort
+- [ ] Radix Sort
+- [ ] BFS
+- [ ] DFS
+- [ ] Shortest Path
+- [ ] Greedy Algorithms
+- [ ] Dynamic Programming
 
-- Đọc và hiểu code tốt hơn
-- Tự phân tích độ phức tạp thuật toán
-- Viết implementation từ đầu thay vì chỉ sử dụng thư viện
-- Hiểu cách dữ liệu được lưu trữ và xử lý trong bộ nhớ
-- Tiến tới các chủ đề nâng cao về **Data Structures, Algorithms và Systems Programming**
+### Projects
+
+- [ ] Data Structures mini-projects
+- [ ] Algorithm visualizer
+- [ ] C/C++ CLI applications
+- [ ] Problem-solving practice set
+- [ ] Larger Data Structures & Algorithms project
+
+## 📊 Progress Philosophy
+
+The repository is intentionally organized as a learning journey rather than a finished library.
+
+```text
+Beginner
+   ↓
+C/C++ Fundamentals
+   ↓
+Array ADT
+   ↓
+Searching & Recursion
+   ↓
+Big-O Analysis
+   ↓
+Linear Data Structures
+   ↓
+Trees & Hash Tables
+   ↓
+Sorting & Graph Algorithms
+   ↓
+Advanced DSA
+   ↓
+Projects / Interview Problems
+```
+
+## 🤝 Contributing / Learning Together
+
+This repository is primarily a personal learning space, but suggestions, corrections, and alternative solutions are welcome.
+
+If you find a better implementation or a more efficient algorithm, feel free to open an **Issue** or **Pull Request**.
+
+## ⭐ Support
+
+If this repository helps you learn C/C++ or Data Structures & Algorithms, consider giving it a ⭐ on GitHub.
 
 ## 👤 Author
 
 **Zackik**
 
-GitHub: [@Zackik](https://github.com/Zackik)
+- GitHub: url@Zackikhttps://github.com/Zackik
+- Repository: urllearnc-_withmehttps://github.com/Zackik/learnc-_withme
 
-## ⭐ Repository
+---
 
-Nếu repository này hữu ích cho quá trình học C/C++, hãy để lại một ⭐ để đánh dấu hành trình học tập.
+> **Learn by coding. Understand by tracing. Improve by analyzing.** 💻🧠
