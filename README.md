@@ -1,114 +1,131 @@
 # Learn C/C++ With Me 🚀
 
-> A hands-on journey through **C/C++, Data Structures, Algorithms, problem solving, and Big-O analysis**.
+> A personal hands-on repository for learning **C/C++, Object-Oriented Programming, Data Structures, Algorithms, and problem solving**.
 
-urlRepository: Zackik/learnc-_withmehttps://github.com/Zackik/learnc-_withme
+[![Language](https://img.shields.io/badge/Language-C%2FC%2B%2B-blue.svg)](https://isocpp.org/)
+[![Editor](https://img.shields.io/badge/Editor-VS%20Code-007ACC.svg)](https://code.visualstudio.com/)
+[![GitHub](https://img.shields.io/badge/GitHub-Zackik-181717.svg)](https://github.com/Zackik)
 
-## 📌 About
+## 📖 About
 
-**Learn C/C++ With Me** is a personal learning repository built around one principle:
+**Learn C/C++ With Me** is a learning-by-doing repository.
+
+The main idea is simple:
 
 > **Don't just make the code work — understand how and why it works.**
 
-The repository contains implementations, exercises, algorithm analysis, traces, and experiments focused on building a strong foundation in programming and Data Structures & Algorithms.
+The repository contains exercises, implementations, experiments, and coursework related to C/C++ programming. It is organized as a progressive learning journey, from basic programming and array manipulation to **ADT, algorithms, and OOP**.
 
-The current material is centered on **Array ADT and array-based algorithms**, with the roadmap gradually expanding toward Linked Lists, Stacks, Queues, Trees, Hash Tables, Sorting, and Graphs.
+This is a **learning repository**, not a production-ready library. Code may be refactored or improved as new concepts are learned.
 
-## 🎯 Learning Goals
+## 🎯 Goals
 
-This repository aims to help build the ability to:
+- Build a strong foundation in C/C++.
+- Practice writing programs from scratch.
+- Understand arrays, memory, pointers, functions, and classes.
+- Learn how Abstract Data Types (ADT) work.
+- Practice common problem-solving patterns.
+- Understand algorithm complexity and Big-O.
+- Learn Object-Oriented Programming through practical examples.
+- Gradually build a foundation for Data Structures & Algorithms.
 
-- Write C/C++ from fundamentals instead of relying only on libraries.
-- Understand memory, arrays, indexes, pointers, and data representation.
-- Implement common data-structure operations from scratch.
-- Trace an algorithm step by step.
-- Analyze **time and space complexity**.
-- Compare different approaches to the same problem.
-- Recognize Best, Average, and Worst Cases.
-- Build a foundation for competitive programming, technical interviews, and systems programming.
+## 📚 Main Topics
 
-## 📚 Current Topics
+### 1. C/C++ Fundamentals
 
-### 1. Array ADT
+Practice with:
 
-The repository includes hands-on work with an Array ADT and operations such as:
+- Variables and data types
+- Input / output
+- Conditions and loops
+- Functions
+- Strings
+- Arrays
+- Pointers
+- Basic memory concepts
+- Problem solving
 
-- Display elements
+### 2. Array ADT
+
+The repository currently contains many exercises around **Array ADT**, including:
+
+- Display
 - Append
 - Insert
 - Delete
 - Get / Set
-- Find Max / Min
-- Sum / Average
 - Search
+- Maximum / Minimum
+- Sum / Average
 - Reverse
 - Shift / Circular Shift
-- Check whether an array is sorted
-- Insert into a sorted array
-- Merge sorted arrays
-- Rearrange negative and positive values
+- Sorted-array operations
+- Merge arrays
+- Rearranging elements
 
-### 2. Array Problems
+### 3. Array Problems
 
-Current exercises include problems such as:
+Examples include:
 
-- Finding missing elements
-- Finding duplicate elements
-- Finding maximum and minimum values
+- Find missing elements
+- Find duplicate elements
+- Find maximum and minimum values
 - Pair Sum / Two Sum
-- Merging arrays
-- Array manipulation and transformation
-- Combining multiple array techniques into complete solutions
+- Array transformation
+- Array merging
+- Combining multiple array operations
 
-### 3. Searching
+### 4. Searching & Algorithms
+
+Current practice includes:
 
 - Linear Search
 - Binary Search
 - Recursive Binary Search
-- Improved Linear Search techniques such as Move-to-Front
-
-### 4. Algorithm Analysis
-
-A major focus of the repository is learning how to analyze algorithms rather than memorizing answers.
-
-Topics include:
-
-- `O(1)` — Constant
-- `O(log n)` — Logarithmic
-- `O(n)` — Linear
-- `O(n log n)` — Linearithmic
-- `O(n²)` — Quadratic
-- `O(n² log n)`
+- Move-to-Front style search
 - Recursion
-- Basic recurrence analysis
-- Exact operation counting
+- Algorithm tracing
+
+### 5. Algorithm Analysis
+
+The repository also focuses on understanding **why an algorithm has a particular complexity**.
+
+| Complexity | Meaning |
+|---|---|
+| `O(1)` | Constant |
+| `O(log n)` | Logarithmic |
+| `O(n)` | Linear |
+| `O(n log n)` | Linearithmic |
+| `O(n²)` | Quadratic |
+
+Also practiced:
+
 - Best Case
 - Average Case
 - Worst Case
 - Time Complexity
 - Space Complexity
+- Operation counting
+- Basic recursion analysis
 
-## 🧠 Learning Method
+### 6. Object-Oriented Programming
 
-Each topic follows a practical workflow:
+The repository also contains dedicated OOP practice:
 
-```text
-Understand the Concept
-        ↓
-Implement the Code
-        ↓
-Trace the Algorithm
-        ↓
-Test with Examples
-        ↓
-Analyze Time / Space Complexity
-        ↓
-Solve Variations
-        ↓
-Refactor and Improve
-```
+- Classes and objects
+- Attributes and methods
+- Constructors
+- Encapsulation
+- Student / Product class exercises
+- Practical class-based programming
 
-The goal is to develop **algorithmic thinking**, not simply collect code snippets.
+OOP material is organized mainly under:
+
+`OOP/`
+
+and
+
+`OOP_2026/`
 
 ## 🗂️ Repository Structure
 
@@ -116,29 +133,94 @@ The goal is to develop **algorithmic thinking**, not simply collect code snippet
 learnc-_withme/
 │
 ├── .vscode/
-│   ├── launch.json
-│   ├── settings.json
-│   └── tasks.json
+│   └── VS Code configuration
 │
 ├── ADT ARRAY/
-│   ├── Find_duplicates
 │   ├── Find_duplicates.cpp
-│   ├── find_missing_elements
 │   ├── find_missing_elements.cpp
-│   ├── finding_max_and_min
 │   ├── finding_max_and_min.cpp
-│   ├── homework.cpp
-│   ├── pair_sum_two_sum
 │   ├── pair_sum_two_sum.cpp
-│   ├── pull_all_together_in_c++
+│   ├── homework.cpp
+│   ├── test3.cpp
+│   └── ...
+│
+├── OOP/
+│   └── OOP exercises
+│
+├── OOP_2026/
+│   ├── Bai1.cpp
+│   ├── Product_Class.cpp
+│   ├── Sinh_Vien.cpp
+│   ├── Student_class.cpp
 │   └── ...
 │
 └── README.md
 ```
 
-The `ADT ARRAY` directory contains the main collection of array implementations and exercises currently being studied. citeturn3file0
+## 🧠 Learning Workflow
 
-## 🛠️ Technology Stack
+Each topic is approached using the following process:
+
+```text
+Learn the concept
+       ↓
+Implement it
+       ↓
+Test it
+       ↓
+Trace the algorithm
+       ↓
+Analyze complexity
+       ↓
+Find edge cases
+       ↓
+Improve the solution
+```
+
+The goal is to develop **understanding and problem-solving ability**, rather than simply collecting solutions.
+
+## ▶️ How to Run
+
+### Requirements
+
+Install a C++ compiler such as **G++**.
+
+Check your installation:
+
+```bash
+g++ --version
+```
+
+### Compile a program
+
+Because the repository contains many independent exercises, compile the file you want to study.
+
+Example:
+
+```bash
+g++ "ADT ARRAY/pair_sum_two_sum.cpp" -o pair_sum
+```
+
+Run on Linux/macOS:
+
+```bash
+./pair_sum
+```
+
+Run on Windows:
+
+```powershell
+.\pair_sum.exe
+```
+
+Another example:
+
+```bash
+g++ "OOP_2026/Student_class.cpp" -o student
+./student
+```
+
+## 🛠️ Tools
 
 - **C / C++**
 - **GCC / G++**
@@ -146,84 +228,18 @@ The `ADT ARRAY` directory contains the main collection of array implementations 
 - **Git**
 - **GitHub**
 
-## ▶️ Build & Run
-
-### Compile a C++ file
-
-```bash
-g++ "ADT ARRAY/learnc++.cpp" -o learnc
-```
-
-### Run
-
-Linux / macOS:
-
-```bash
-./learnc
-```
-
-Windows:
-
-```powershell
-.\learnc.exe
-```
-
-For another exercise, replace the source file with the file you want to study:
-
-```bash
-g++ "ADT ARRAY/pair_sum_two_sum.cpp" -o pair_sum
-./pair_sum
-```
-
-## 🔬 Example: Complexity Thinking
-
-Instead of only asking:
-
-```text
-Does the program produce the correct answer?
-```
-
-this repository also asks:
-
-```text
-How many operations does it perform?
-How does the algorithm behave when n grows?
-What is the Best Case?
-What is the Worst Case?
-How much extra memory does it use?
-Can the solution be improved?
-```
-
-For example, a simple linear scan generally has:
-
-```text
-Best Case:   O(1)
-Worst Case:  O(n)
-Space:       O(1)
-```
-
-This style of analysis is applied throughout the exercises.
-
-## 📈 Roadmap
+## 📈 Learning Roadmap
 
 ### Foundations
 
-- [x] C/C++ fundamentals
-- [x] Array basics
+- [x] C/C++ basics
+- [x] Arrays
+- [x] Functions
 - [x] Array ADT
-- [x] Array insertion / deletion
-- [x] Linear Search
-- [x] Binary Search
-- [x] Recursive Binary Search
-- [x] Reverse Array
-- [x] Circular Shift
-- [x] Sorted Array Operations
-- [x] Merge Arrays
-- [x] Missing Elements
-- [x] Duplicate Elements
-- [x] Pair Sum / Two Sum
-- [x] Big-O fundamentals
-- [x] Recursion complexity basics
+- [x] Searching
+- [x] Recursion
+- [x] Basic Big-O analysis
+- [x] OOP fundamentals
 
 ### Data Structures
 
@@ -232,12 +248,11 @@ This style of analysis is applied throughout the exercises.
 - [ ] Circular Linked List
 - [ ] Stack
 - [ ] Queue
-- [ ] Circular Queue
 - [ ] Deque
 - [ ] Hash Table
-- [ ] Trees
+- [ ] Tree
 - [ ] Binary Search Tree
-- [ ] Heap / Priority Queue
+- [ ] Heap
 - [ ] Graph
 
 ### Algorithms
@@ -248,8 +263,6 @@ This style of analysis is applied throughout the exercises.
 - [ ] Merge Sort
 - [ ] Quick Sort
 - [ ] Heap Sort
-- [ ] Counting Sort
-- [ ] Radix Sort
 - [ ] BFS
 - [ ] DFS
 - [ ] Shortest Path
@@ -258,55 +271,86 @@ This style of analysis is applied throughout the exercises.
 
 ### Projects
 
-- [ ] Data Structures mini-projects
+- [ ] Data Structures mini-project
 - [ ] Algorithm visualizer
-- [ ] C/C++ CLI applications
-- [ ] Problem-solving practice set
-- [ ] Larger Data Structures & Algorithms project
+- [ ] C++ CLI application
+- [ ] Problem-solving collection
+- [ ] Larger DSA project
 
-## 📊 Progress Philosophy
+## 🔬 Example: Thinking About Complexity
 
-The repository is intentionally organized as a learning journey rather than a finished library.
+Instead of only asking:
 
 ```text
-Beginner
-   ↓
-C/C++ Fundamentals
-   ↓
-Array ADT
-   ↓
-Searching & Recursion
-   ↓
-Big-O Analysis
-   ↓
-Linear Data Structures
-   ↓
-Trees & Hash Tables
-   ↓
-Sorting & Graph Algorithms
-   ↓
-Advanced DSA
-   ↓
-Projects / Interview Problems
+"Does the program work?"
 ```
 
-## 🤝 Contributing / Learning Together
+also ask:
 
-This repository is primarily a personal learning space, but suggestions, corrections, and alternative solutions are welcome.
+```text
+How many operations does it perform?
+What happens when n becomes larger?
+What is the best case?
+What is the worst case?
+How much memory does it use?
+Can the algorithm be improved?
+```
 
-If you find a better implementation or a more efficient algorithm, feel free to open an **Issue** or **Pull Request**.
+For example, a simple linear search can have:
 
-## ⭐ Support
+```text
+Best Case:   O(1)
+Worst Case:  O(n)
+Space:       O(1)
+```
 
-If this repository helps you learn C/C++ or Data Structures & Algorithms, consider giving it a ⭐ on GitHub.
+This way of thinking is an important part of the learning process in this repository.
+
+## 🚧 Status
+
+This repository is **actively evolving**.
+
+New exercises, algorithms, OOP examples, and data structures will be added as the learning journey continues.
+
+```text
+C/C++ Fundamentals
+        ↓
+Array ADT
+        ↓
+Searching & Recursion
+        ↓
+Big-O Analysis
+        ↓
+OOP
+        ↓
+Linear Data Structures
+        ↓
+Trees & Hash Tables
+        ↓
+Sorting & Graphs
+        ↓
+Projects
+```
+
+## 🤝 Contributing
+
+This is primarily a personal learning repository, but suggestions and alternative solutions are welcome.
+
+If you notice a bug or have a better approach:
+
+1. Open an **Issue**, or
+2. Submit a **Pull Request**.
+
+Learning together is encouraged. 💻
 
 ## 👤 Author
 
 **Zackik**
 
-- GitHub: url@Zackikhttps://github.com/Zackik
-- Repository: urllearnc-_withmehttps://github.com/Zackik/learnc-_withme
+GitHub: https://github.com/Zackik
+
+Repository: https://github.com/Zackik/learnc-_withme
 
 ---
 
-> **Learn by coding. Understand by tracing. Improve by analyzing.** 💻🧠
+> **Learn by coding. Understand by tracing. Improve by analyzing.** 🧠💻
